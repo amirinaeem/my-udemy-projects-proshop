@@ -28,16 +28,47 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar
+        bg='blue'
+        variant='grey'
+        expand='lg'
+        className='py-3 shadow-sm'
+        style={{ backgroundColor: 'lightblue' }}
+      >
         <Container>
+          {/* Logo */}
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <img src={logo} alt='Proshop-logo' />
-              ProShop
+              <img
+                src={logo}
+                alt='Proshop-logo'
+                style={{ height: '30px', marginRight: '10px' }}
+              />
+              WebDevsPros
             </Navbar.Brand>
           </LinkContainer>
+
+          {/* Toggle for mobile */}
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
+
+          {/* Navigation Links */}
           <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='mx-auto'>
+              <LinkContainer to='/'>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/project'>
+                <Nav.Link>My Product</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/network'>
+                <Nav.Link>My Network</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/jobs'>
+                <Nav.Link>Jobs Search</Nav.Link>
+              </LinkContainer>
+            </Nav>
+
+            {/* Right Section */}
             <Nav className='ms-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
@@ -49,6 +80,7 @@ const Header = () => {
                   )}
                 </Nav.Link>
               </LinkContainer>
+
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>

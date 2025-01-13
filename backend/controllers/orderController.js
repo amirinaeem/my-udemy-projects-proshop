@@ -47,7 +47,10 @@ const getOrderById = asyncHandler(async (req, res) => {
     'name email'
   );
   if (order) {
-    res.status(200).json(order);
+    res.status(200).json({
+      ...order.toObject(),
+      user: order.user || { name: 'Deleted User', email: '' },
+    });
   } else {
     res.status(404);
     throw new Error('Order not found');
